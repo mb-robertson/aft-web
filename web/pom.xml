@@ -126,5 +126,15 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<!-- puts resources into the jar -->
+		<resources>
+			<resource>
+				<directory>src/</directory>
+				<includes>
+					<include>**/*.txt</include>
+					<include>**/*.csv</include>
+				</includes>
+			</resource>
+		</resources>
 	</build>
 </project>
