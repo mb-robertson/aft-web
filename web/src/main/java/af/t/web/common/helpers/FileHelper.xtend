@@ -43,7 +43,7 @@ class FileHelper {
 	}
 
 	new(Class<?> clazz, String pattern) {
-		info("attempting to initialize {}, using path: {}, pattern: {}", this.class, clazz, pattern)
+		trace("attempting to initialize {}, using path: {}, pattern: {}", this.class, clazz, pattern)
 
 		if (!isInitialized || !clazz.package.name.equals(currentPackageName) || !pattern.equals(currentPattern)) {
 			info("{} was not previously initialized, or is about to change", this.class)
@@ -68,7 +68,7 @@ class FileHelper {
 	* @Return the URI for the named resource
 	*/
 	package def getResourceUri(String resourceName) {
-		info("getting URI for: {}", resourceName)
+		trace("getting URI for: {}", resourceName)
 
 		//this class used as a guaranteed-to-exist reference point
 		this.class.getResource(resourceName).toURI
@@ -79,7 +79,7 @@ class FileHelper {
 	* @Return the File Located associated with that resource name
 	*/
 	def getResourceAsFile(String resourceName) {
-		debug("getting resource as file: {}", resourceName)
+		trace("getting resource as file: {}", resourceName)
 
 		//Filter all resources to ones with requested resource's name
 		var candidateResources = resources.filter [
@@ -110,7 +110,7 @@ class FileHelper {
 			}
 		}
 		
-		debug("foundCandidate is: {}", foundCandidate)
+		trace("foundCandidate is: {}", foundCandidate)
 
 		if (foundCandidate.equals(null)) {
 			error("requested resource: {} was not found in the resource path: {}", resourceName, currentPackageName)
@@ -118,10 +118,10 @@ class FileHelper {
 		}
 
 		val foundUri = (File.separator + foundCandidate).resourceUri
-		info("uri found: {}", foundUri)
+		trace("uri found: {}", foundUri)
 		val resourceFile = new File(foundUri)
 		
-		debug("{} was found at: {}", resourceName, resourceFile.canonicalPath)
+		trace("{} was found at: {}", resourceName, resourceFile.canonicalPath)
 		resourceFile
 
 	}
