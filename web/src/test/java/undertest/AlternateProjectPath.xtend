@@ -1,0 +1,5 @@
+package undertest
+
+class AlternateProjectPath {
+	
+}
