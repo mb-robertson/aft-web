@@ -1,0 +1,10 @@
+package af.t.web.allsuites
+
+#Spec Progression
+
+##common/helpers
+-\.*common.*helpers.*\
+
+
+##common/settings
+-\.*common.*settings.*\
